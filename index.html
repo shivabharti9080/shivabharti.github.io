@@ -1,78 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shiva Bharti | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Style -->
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      font-family: Poppins, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
-      margin: 0;
-      text-align: center;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      color:white;
+      min-height:100vh;
+      overflow-x:hidden;
     }
     header {
-      padding: 50px 20px;
+      text-align:center;
+      padding:60px 20px;
+      animation: fadeInDown 1.2s ease;
     }
     h1 {
-      color: #38bdf8;
-      font-size: 2.5rem;
+      font-size:2.8rem;
+      color:#38bdf8;
+    }
+    header p {
+      color:#94a3b8;
+      font-size:1.2rem;
     }
     section {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
+      max-width:1000px;
+      margin:40px auto;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
     }
     .card {
-      background: #1e293b;
-      border-radius: 12px;
-      padding: 25px;
-      margin: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      background:#1e293b;
+      border-radius:16px;
+      padding:30px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1.2s ease;
     }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: bold;
+    .card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.5);
     }
+    h2 {
+      color:#38bdf8;
+      margin-bottom:10px;
+      font-size:1.5rem;
+    }
+    p, small { color:#cbd5e1; }
+    .skill {
+      display:inline-block;
+      background:#0f172a;
+      color:#38bdf8;
+      padding:6px 12px;
+      border-radius:20px;
+      margin:4px;
+      font-size:0.9rem;
+    }
+    form input, form textarea, form button {
+      width:100%;
+      margin:8px 0;
+      padding:10px;
+      border:none;
+      border-radius:8px;
+      font-family:'Poppins',sans-serif;
+    }
+    form input, form textarea { background:#0f172a; color:white; }
+    form button {
+      background:#38bdf8;
+      color:#0f172a;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    form button:hover { background:#0ea5e9; }
     footer {
-      padding: 20px;
-      color: #94a3b8;
+      text-align:center;
+      padding:25px;
+      color:#94a3b8;
     }
+    @keyframes fadeInUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeInDown { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Shiva Bharti</h1>
-    <p>Future AI Engineer | Web Developer | Dreamer</p>
+    <p>AI Engineer | Web Developer | Dreamer 🚀</p>
   </header>
 
-  <section>
+  <section id="main-content">
     <div class="card">
       <h2>About Me</h2>
-      <p>I’m passionate about coding, AI, and creating innovative things. Currently learning web development and working toward my dream of becoming an AI researcher.</p>
+      <p>Hi 👋 I'm <b>Shiva</b>, passionate about Artificial Intelligence and Web Development. I love learning new tech, building cool projects and dreaming big!</p>
     </div>
 
     <div class="card">
       <h2>Skills</h2>
-      <p>HTML • CSS • JavaScript • Python • React • AI & ML Basics</p>
+      <div id="skills-list">Loading...</div>
     </div>
 
     <div class="card">
       <h2>Projects</h2>
-      <p>💻 Portfolio Website (this one!)<br>🤖 Smart Chatbot (coming soon)</p>
+      <div id="projects-list">Loading...</div>
     </div>
 
     <div class="card">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:shivabharti9080@gmail.com">shivabharti9080@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/shivabharti">github.com/shivabharti</a></p>
+      <h2>Experience</h2>
+      <div id="exp-list">Loading...</div>
+    </div>
+
+    <div class="card">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <input id="c-name" type="text" placeholder="Your Name" required>
+        <input id="c-email" type="email" placeholder="Your Email" required>
+        <textarea id="c-message" rows="4" placeholder="Your Message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Shiva Bharti | Made with ❤</p>
+    © 2025 Shiva Bharti | Made with ❤️
   </footer>
+
+  <!-- Backend Connection -->
+  <script>
+    const BACKEND = "https://tera-backend.onrender.com"; // <-- yaha apna Render backend URL daalna
+
+    async function loadData() {
+      try {
+        const [projects, skills, exp] = await Promise.all([
+          fetch(BACKEND + "/api/projects").then(r => r.json()),
+          fetch(BACKEND + "/api/skills").then(r => r.json()),
+          fetch(BACKEND + "/api/experience").then(r => r.json())
+        ]);
+        renderProjects(projects);
+        renderSkills(skills);
+        renderExperience(exp);
+      } catch (err) {
+        console.error("Backend error:", err);
+      }
+    }
+
+    function renderProjects(list) {
+      const el = document.getElementById("projects-list");
+      el.innerHTML = list.map(p => `
+        <div style="margin:10px 0;">
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <small>${p.tech}</small>
+        </div>`).join("");
+    }
+
+    function renderSkills(list) {
+      const el = document.getElementById("skills-list");
+      el.innerHTML = list.map(s => `<span class="skill">${s}</span>`).join(" ");
+    }
+
+    function renderExperience(list) {
+      const el = document.getElementById("exp-list");
+      el.innerHTML = list.map(e => `
+        <div style="margin:10px 0;">
+          <h4>${e.role} @ ${e.company}</h4>
+          <p>${e.desc}</p>
+        </div>`).join("");
+    }
+
+    async function submitContactForm(e) {
+      e.preventDefault();
+      const name = document.getElementById("c-name").value;
+      const email = document.getElementById("c-email").value;
+      const message = document.getElementById("c-message").value;
+      try {
+        const res = await fetch(BACKEND + "/api/contact", {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({ name, email, message })
+        });
+        const data = await res.json();
+        alert(data.msg || "Message sent successfully!");
+      } catch (err) {
+        alert("Error sending message 😔");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded",()=>{
+      loadData();
+      document.getElementById("contact-form").addEventListener("submit",submitContactForm);
+    });
+  </script>
 </body>
 </html>
