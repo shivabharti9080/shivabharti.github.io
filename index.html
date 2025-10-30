@@ -1,121 +1,78 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, Sun, Moon } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shiva Bharti | Portfolio</title>
+  <style>
+    body {
+      font-family: Poppins, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      margin: 0;
+      text-align: center;
+    }
+    header {
+      padding: 50px 20px;
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+    }
+    section {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      padding: 20px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Shiva Bharti</h1>
+    <p>Future AI Engineer | Web Developer | Dreamer</p>
+  </header>
 
-export default function App() {
-  const [dark, setDark] = useState(true);
-
-  const projects = [
-    {
-      title: 'AI Image Classifier',
-      desc: 'Built with PyTorch & Flask. Uses transfer learning for image classification.',
-      tech: ['Python', 'PyTorch', 'Flask'],
-      link: '#',
-    },
-    {
-      title: 'Chatbot using NLP',
-      desc: 'Trained transformer-based chatbot using HuggingFace models.',
-      tech: ['Python', 'NLP', 'Transformers'],
-      link: '#',
-    },
-  ];
-
-  const skills = [
-    'Python', 'Machine Learning', 'Deep Learning', 'PyTorch', 'TensorFlow', 'NLP', 'Computer Vision', 'Docker', 'Git'
-  ];
-
-  return (
-    <div className={dark ? 'dark' : ''}>
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-500">
-        {/* Header */}
-        <header className="flex items-center justify-between p-6 max-w-6xl mx-auto">
-          <h1 className="text-3xl font-extrabold">Shiva Bharti</h1>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setDark(!dark)}
-              className="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
-            >
-              {dark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          </div>
-        </header>
-
-        {/* Hero Section */}
-        <section className="text-center p-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl font-bold"
-          >
-            Aspiring AI Researcher 🚀
-          </motion.h2>
-          <p className="mt-3 text-gray-600 dark:text-gray-400">Building intelligent systems & aiming for 30+ LPA career milestone.</p>
-          <div className="flex justify-center gap-4 mt-6">
-            <a href="#" className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full"><Github /></a>
-            <a href="#" className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full"><Linkedin /></a>
-            <a href="mailto:your.email@example.com" className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full"><Mail /></a>
-          </div>
-        </section>
-
-        {/* About */}
-        <section className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow mt-10">
-          <h3 className="text-2xl font-bold mb-2">About Me</h3>
-          <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-            I'm Shiva — passionate about AI, coding, and innovation. Currently pursuing B.Tech from Shivalik College of Engineering.
-            I love solving real-world problems using Machine Learning and Deep Learning.
-          </p>
-        </section>
-
-        {/* Skills */}
-        <section className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow mt-10">
-          <h3 className="text-2xl font-bold mb-4">Skills</h3>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((s, i) => (
-              <span key={i} className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm">{s}</span>
-            ))}
-          </div>
-        </section>
-
-        {/* Projects */}
-        <section id="projects" className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow mt-10">
-          <h3 className="text-2xl font-bold mb-4">Projects</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {projects.map((p, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.02 }} className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <h4 className="font-semibold">{p.title}</h4>
-                <p className="text-sm mt-1 text-gray-700 dark:text-gray-300">{p.desc}</p>
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {p.tech.map((t, j) => (
-                    <span key={j} className="text-xs bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded">{t}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Education & Certificates */}
-        <section className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow mt-10">
-          <h3 className="text-2xl font-bold mb-2">Education & Certificates</h3>
-          <p className="text-sm">B.Tech — Shivalik College of Engineering</p>
-          <ul className="mt-2 text-sm list-disc list-inside">
-            <li>Deep Learning Specialization — Coursera</li>
-            <li>Machine Learning — Andrew Ng</li>
-            <li>Data Science Certificate — Kaggle</li>
-          </ul>
-        </section>
-
-        {/* Contact */}
-        <section className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow mt-10 mb-10 text-center">
-          <h3 className="text-2xl font-bold mb-2">Contact</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Let's connect and build something amazing!</p>
-          <div className="mt-4 flex justify-center gap-4">
-            <a href="mailto:your.email@example.com" className="px-4 py-2 bg-indigo-600 text-white rounded-lg flex items-center gap-2"><Mail size={16}/> Mail Me</a>
-            <a href="/resume.pdf" download className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center gap-2"><Download size={16}/> Download Resume</a>
-          </div>
-        </section>
-      </div>
+  <section>
+    <div class="card">
+      <h2>About Me</h2>
+      <p>I’m passionate about coding, AI, and creating innovative things. Currently learning web development and working toward my dream of becoming an AI researcher.</p>
     </div>
-  );
-}
+
+    <div class="card">
+      <h2>Skills</h2>
+      <p>HTML • CSS • JavaScript • Python • React • AI & ML Basics</p>
+    </div>
+
+    <div class="card">
+      <h2>Projects</h2>
+      <p>💻 Portfolio Website (this one!)<br>🤖 Smart Chatbot (coming soon)</p>
+    </div>
+
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:shivabharti@gmail.com">shivabharti@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/shivabharti">github.com/shivabharti</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Shiva Bharti | Made with ❤</p>
+  </footer>
+</body>
+</html>
