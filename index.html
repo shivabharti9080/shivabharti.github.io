@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shiva Bharti | Portfolio</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Style -->
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {margin:0; padding:0; box-sizing:border-box;}
     body {
       font-family:'Poppins',sans-serif;
-      background:linear-gradient(135deg,#0f172a,#1e293b);
+      background:linear-gradient(135deg,#0a0a0f,#101820,#002b36);
       color:white;
       min-height:100vh;
       overflow-x:hidden;
+      position:relative;
     }
+
+    /* 🔥 Devil + Nature glow background */
+    body::before {
+      content:"";
+      position:absolute;
+      top:-50%;
+      left:-50%;
+      width:200%;
+      height:200%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(0,255,0,0.15), transparent 40%),
+        radial-gradient(circle at 75% 75%, rgba(255,0,0,0.2), transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(0,255,255,0.15), transparent 40%);
+      animation: moveGlow 20s infinite alternate ease-in-out;
+      z-index:0;
+    }
+
+    @keyframes moveGlow {
+      0% {transform:translate(0,0) scale(1);}
+      100% {transform:translate(-10%,-10%) scale(1.2);}
+    }
+
     header {
       text-align:center;
-      padding:60px 20px;
-      animation: fadeInDown 1.2s ease;
+      padding:70px 20px;
+      position:relative;
+      z-index:1;
+      animation: fadeInDown 1.5s ease;
     }
+
     h1 {
-      font-size:2.8rem;
-      color:#38bdf8;
+      font-size:3rem;
+      color:#00ffcc;
+      text-shadow:0 0 10px #00ffcc, 0 0 20px #00ffaa;
     }
+
     header p {
-      color:#94a3b8;
+      color:#cbd5e1;
       font-size:1.2rem;
     }
+
     section {
       max-width:1000px;
       margin:40px auto;
@@ -38,34 +64,45 @@
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
       gap:25px;
+      z-index:1;
+      position:relative;
     }
+
     .card {
-      background:#1e293b;
+      background:rgba(20,30,40,0.9);
+      border:1px solid rgba(0,255,150,0.1);
       border-radius:16px;
       padding:30px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+      box-shadow:0 4px 20px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,255,100,0.1);
       transition:transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeInUp 1.2s ease;
+      animation: fadeInUp 1.5s ease;
     }
+
     .card:hover {
-      transform:translateY(-6px);
-      box-shadow:0 8px 20px rgba(0,0,0,0.5);
+      transform:translateY(-6px) scale(1.02);
+      box-shadow:0 0 30px rgba(0,255,100,0.3), 0 0 20px rgba(255,0,0,0.3);
     }
+
     h2 {
-      color:#38bdf8;
+      color:#00ffaa;
+      text-shadow:0 0 10px #00ffaa;
       margin-bottom:10px;
-      font-size:1.5rem;
+      font-size:1.6rem;
     }
-    p, small { color:#cbd5e1; }
+
+    p, small {color:#cbd5e1;}
+
     .skill {
       display:inline-block;
-      background:#0f172a;
-      color:#38bdf8;
+      background:rgba(0,255,150,0.1);
+      color:#00ffaa;
       padding:6px 12px;
       border-radius:20px;
       margin:4px;
       font-size:0.9rem;
+      box-shadow:0 0 10px rgba(0,255,100,0.2);
     }
+
     form input, form textarea, form button {
       width:100%;
       margin:8px 0;
@@ -74,131 +111,171 @@
       border-radius:8px;
       font-family:'Poppins',sans-serif;
     }
-    form input, form textarea { background:#0f172a; color:white; }
+
+    form input, form textarea {
+      background:#0a0a12;
+      color:#00ffaa;
+      border:1px solid rgba(0,255,100,0.2);
+    }
+
     form button {
-      background:#38bdf8;
+      background:#00ffaa;
       color:#0f172a;
       font-weight:600;
       cursor:pointer;
       transition:0.3s;
     }
-    form button:hover { background:#0ea5e9; }
+
+    form button:hover {
+      background:#00ffcc;
+      box-shadow:0 0 10px #00ffaa,0 0 20px #00ffaa;
+    }
+
     footer {
       text-align:center;
-      padding:25px;
+      padding:30px;
       color:#94a3b8;
+      font-size:0.9rem;
+      position:relative;
+      z-index:1;
     }
-    @keyframes fadeInUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-    @keyframes fadeInDown { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+
+    /* Namaste boy animation 👇 */
+    .namaste-boy {
+      position:relative;
+      margin:40px auto;
+      width:150px;
+      height:250px;
+      animation: fadeInUp 2s ease;
+    }
+
+    .head {
+      width:60px;
+      height:60px;
+      background:#ffe0bd;
+      border-radius:50%;
+      position:absolute;
+      left:45px;
+      top:0;
+      animation: blink 5s infinite;
+    }
+
+    .body {
+      width:60px;
+      height:100px;
+      background:linear-gradient(180deg,#00ffaa,#008066);
+      border-radius:20px;
+      position:absolute;
+      left:45px;
+      top:60px;
+    }
+
+    .hand {
+      width:20px;
+      height:70px;
+      background:#ffe0bd;
+      border-radius:20px;
+      position:absolute;
+      top:70px;
+      transform-origin:top center;
+      animation: namaste 2s infinite alternate ease-in-out;
+    }
+
+    .left { left:30px; }
+    .right { left:100px; }
+
+    @keyframes blink {
+      0%,90%,100% { box-shadow:inset 0 0 0 0 black; }
+      95% { box-shadow:inset 0 25px 0 0 black; }
+    }
+
+    @keyframes namaste {
+      0% {transform:rotate(0deg);}
+      100% {transform:rotate(-15deg);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    @keyframes fadeInDown {
+      from {opacity:0; transform:translateY(-20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
   </style>
 </head>
 
 <body>
   <header>
     <h1>Shiva Bharti</h1>
-    <p>AI Engineer | Web Developer | Dreamer 🚀</p>
+    <p>AI Engineer | Web Developer | Dreamer 🌿😈</p>
   </header>
 
-  <section id="main-content">
+  <section>
     <div class="card">
       <h2>About Me</h2>
-      <p>Hi 👋 I'm <b>Shiva</b>, passionate about Artificial Intelligence and Web Development. I love learning new tech, building cool projects and dreaming big!</p>
+      <p>Hey 👋 I'm <b>Shiva Bharti</b> — an explorer of technology, blending the calm of nature 🌱 with the chaos of creativity 🔥.  
+      Passionate about Artificial Intelligence and Web Development, I love building futuristic ideas and unique experiences.</p>
     </div>
 
     <div class="card">
       <h2>Skills</h2>
-      <div id="skills-list">Loading...</div>
+      <div>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Python</span>
+        <span class="skill">C++</span>
+        <span class="skill">Web Development</span>
+        <span class="skill">AI Basics</span>
+      </div>
     </div>
 
     <div class="card">
       <h2>Projects</h2>
-      <div id="projects-list">Loading...</div>
-    </div>
-
-    <div class="card">
-      <h2>Experience</h2>
-      <div id="exp-list">Loading...</div>
+      <div>
+        <h3>🌐 Portfolio Website</h3>
+        <p>A stunning personal website showcasing my work and vision.</p>
+        <small>HTML, CSS, JavaScript</small>
+      </div>
+      <br>
+      <div>
+        <h3>🤖 Smart Bot</h3>
+        <p>An intelligent chatbot designed to learn and respond smartly using AI.</p>
+        <small>Python, NLP, ML</small>
+      </div>
     </div>
 
     <div class="card">
       <h2>Contact Me</h2>
+      <p>📞 <b>Phone:</b> <a href="tel:+916284172388" style="color:#00ffaa;">+91 62841 72388</a></p>
+      <p>📧 <b>Email:</b> <a href="mailto:shivabharti9080@gmail.com" style="color:#00ffaa;">shivabharti9080@gmail.com</a></p>
       <form id="contact-form">
-        <input id="c-name" type="text" placeholder="Your Name" required>
-        <input id="c-email" type="email" placeholder="Your Email" required>
-        <textarea id="c-message" rows="4" placeholder="Your Message..." required></textarea>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="Your Message..." required></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
   </section>
 
+  <!-- 👦 Namaste Boy Animation -->
+  <div class="namaste-boy">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="hand left"></div>
+    <div class="hand right"></div>
+  </div>
+
   <footer>
-    © 2025 Shiva Bharti | Made with ❤️
+    © 2025 Shiva Bharti | Made with 💚🔥 | <b>Namaste 🙏</b>
   </footer>
 
-  <!-- Backend Connection -->
   <script>
-    const BACKEND = "https://tera-backend.onrender.com"; // <-- yaha apna Render backend URL daalna
-
-    async function loadData() {
-      try {
-        const [projects, skills, exp] = await Promise.all([
-          fetch(BACKEND + "/api/projects").then(r => r.json()),
-          fetch(BACKEND + "/api/skills").then(r => r.json()),
-          fetch(BACKEND + "/api/experience").then(r => r.json())
-        ]);
-        renderProjects(projects);
-        renderSkills(skills);
-        renderExperience(exp);
-      } catch (err) {
-        console.error("Backend error:", err);
-      }
-    }
-
-    function renderProjects(list) {
-      const el = document.getElementById("projects-list");
-      el.innerHTML = list.map(p => `
-        <div style="margin:10px 0;">
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <small>${p.tech}</small>
-        </div>`).join("");
-    }
-
-    function renderSkills(list) {
-      const el = document.getElementById("skills-list");
-      el.innerHTML = list.map(s => `<span class="skill">${s}</span>`).join(" ");
-    }
-
-    function renderExperience(list) {
-      const el = document.getElementById("exp-list");
-      el.innerHTML = list.map(e => `
-        <div style="margin:10px 0;">
-          <h4>${e.role} @ ${e.company}</h4>
-          <p>${e.desc}</p>
-        </div>`).join("");
-    }
-
-    async function submitContactForm(e) {
+    document.getElementById("contact-form").addEventListener("submit", e => {
       e.preventDefault();
-      const name = document.getElementById("c-name").value;
-      const email = document.getElementById("c-email").value;
-      const message = document.getElementById("c-message").value;
-      try {
-        const res = await fetch(BACKEND + "/api/contact", {
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({ name, email, message })
-        });
-        const data = await res.json();
-        alert(data.msg || "Message sent successfully!");
-      } catch (err) {
-        alert("Error sending message 😔");
-      }
-    }
-
-    window.addEventListener("DOMContentLoaded",()=>{
-      loadData();
-      document.getElementById("contact-form").addEventListener("submit",submitContactForm);
+      alert("Thanks for reaching out! Message sent to Shiva 😎");
     });
   </script>
 </body>
